@@ -1,3 +1,5 @@
 print("Hello")
 
-print("velky world")
+print("world")
+
+print("velky velky world")
