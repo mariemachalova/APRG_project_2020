@@ -10,6 +10,23 @@ import matplotlib.pyplot as plt
 vertices = []
 codes = []
 
+vertices = 0
+codes = 0
+
+#vertices = vrcholy
+#coordinates = souradnice
+
+for objekt in objekty:
+    souradnice = objekty[coordinates]
+    delka = len(souradnice) -1
+    codes += [Path.MOVETO] + [Path.LINETO]*delka + [Path.CLOSEPOLY]
+    vertices += souradnice
+    pomocne_pole = []
+    for item in souradnice
+        pomocne_pole += item
+        vertices += pomocne_pole
+
+
 codes = [Path.MOVETO] + [Path.LINETO]*5 + [Path.CLOSEPOLY]
 # *5 - pocet bodu -1 - neco s len()-1?
 vertices = [(14, 46), (7.7, 77), (18.7, 89.4), (36.6, 80.3), (32.8, 54.9), (22.3, 59.9), (0, 0)]
