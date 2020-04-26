@@ -12,9 +12,12 @@ def get_x(self):
 
 def read_input_file(file):
     start_position = []
-    with open(file, 'r') as f:
-        for line in f:
-            x, y = ''.join(line.split()).split(',')
-            start_position.append(Point(robot_position(x), robot_position(y)))
+    with open(file, 'map_data_0.json') as f:
+        start_position.append(Point(robot_position(x), robot_position(y)))
 
     return start_position
+
+def read_input_file(file):
+    finish_position = []
+    with open(file, 'map_data_1.json') as f:
+        finish_position.append(Point(robot_position(x), robot_position(y)))
