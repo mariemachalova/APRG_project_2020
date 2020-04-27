@@ -19,5 +19,5 @@ def read_input_file(file):
 
 def read_input_file(file):
     finish_position = []
-    with open(file, 'map_data_1.json') as f:
+    with open(file, 'map_data_0.json') as f:
         finish_position.append(Point(robot_position(x), robot_position(y)))
