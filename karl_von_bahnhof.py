@@ -62,9 +62,9 @@ objekty = [[(14, 46), (7.7, 77), (18.7, 89.4), (36.6, 80.3), (32.8, 54.9), (22.3
 , [(63.4, 45.1), (88.0, 54.9), (72.6, 20.6), (65.7, 27.7), (63.4, 45.1)], [(47.3, 81.2), (58.5, 77.4), (62.8, 86.3), (88.2, 86.3), (71.1, 60.5), (66.2, 75.2), (51.7, 68.8)]]
 
 # nahodna data pro overeni vykresleni pocatecnich bodu a trasy, pozdeji importovane
-zacatecni_bod = (15, 15)
-koncovy_bod = (50, 50)
-trasa = [(15, 15), (20, 29), (41, 63), (50, 50)]
+zacatecni_bod = (17, 15)
+koncovy_bod = (50, 75)
+trasa = [(17, 15), (50, 75)]
 
 
 vykreslovani_objektu(objekty, trasa, zacatecni_bod, koncovy_bod)
