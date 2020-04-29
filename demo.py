@@ -48,9 +48,9 @@ def seradit_body_podle_uhlu(body):
     mensi=[]
     vetsi=[]
     rovno=[]
-    random_uhel = polarni_uhel(body[randint(0,len(body)-1)])
+    random_uhel = polarni_uhel(body[randint(0,len(body)-1)],body[0])
     for bod in body:
-        uhel_bodu=polarni_uhel(bod)
+        uhel_bodu=polarni_uhel(bod, body[0])
         if uhel_bodu < random_uhel:
             mensi.append(bod)
         elif uhel_bodu == random_uhel:
@@ -69,7 +69,7 @@ def vypis_body(body):
 # tady zacina program bezet
 bodA = Bod(1,5)
 bodB = Bod(5,6)
-bodC = Bod(1,4)
+bodC = Bod(1,2)
 bodD = Bod(8,2)
 
 body = [bodA, bodB, bodC, bodD]
@@ -78,7 +78,7 @@ print('zacatek')
 vypis_body(body)
 
 # let N be number of points
-celkovy_pocet_bodu = len(body)
+N = len(body)
 
 
 prvni_bod = body[0]
@@ -93,19 +93,26 @@ print('po swapu')
 vypis_body(body)
 
 # sort points by polar angle with points[0]
-serazene_body = seradit_body(body)
+global anchor
+anchor = body[0]
+serazene_body = seradit_body_podle_uhlu(body)
 
 
 
-print('serazene')
+print(vypis_body)
 vypis_body(serazene_body)
 
 # let stack = empty_stack()
+
 # push points[0] to stack
 # push points[1] to stack
 # for i = 2 to N-1:
+for i in range(2,N-1):
 #     while count stack >= 2 and ccw(next_to_top(stack), top(stack), points[i]) <= 0:
+#while len(stack)
 #         pop stack
+#stack.pop()
+
 #     push points[i] to stack
 
 
