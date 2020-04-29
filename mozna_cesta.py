@@ -23,22 +23,19 @@ objekty = [[(14, 46), (7.7, 77), (18.7, 89.4), (36.6, 80.3), (32.8, 54.9), (22.3
 def vytvor_usecky(objekty):
     for polygon in objekty:
         p_u = []
-        pruseciky = []
+        muj_prusecik = []
         posledni_souradnice = len(polygon) - 1
         for idx, point in enumerate(polygon):
             if idx == posledni_souradnice:
                 p_u.append((point, polygon[0]))
             else:
                 p_u.append((point, polygon[idx + 1]))
-        najdi_prusecik(n_u, p_u)
-        if najdi_prusecik(n_u, p_u) == True:
-            return x, y
-        else:
-            p_u.pop(p_u)
+        muj_prusecik = najdi_prusecik(n_u, p_u)
+        if muj_prusecik == True:
+            return muj_prusecik
 
 
 def najdi_prusecik(n_u, p_u):
-    pruseciky = []
     x_help1 = (n_u[3] - n_u[1]) * (p_u[2] - p_u[0]) * n_u[0] + (n_u[2] - n_u[0]) * (p_u[2] - p_u[0]) * (p_u[1] - n_u[1]) - (p_u[3] - p_u[1]) * (n_u[2] - n_u[0]) * p_u[0]
     x_help2 = (n_u[3] - n_u[1]) * (p_u[2] - p_u[0]) - (n_u[2] - n_u[0]) * (p_u[3] - p_u[1])
     x = x_help1 / x_help2
@@ -47,7 +44,7 @@ def najdi_prusecik(n_u, p_u):
     y = y_help1 / y_help2
     if (n_u[0] <= x <= n_u[2]) or (p_u[0] <= x <= p_u[2]) and (n_u[1] <= y <= n_u[3]) or (p_u[1] <= y <= p_u[3]):
         print(x, y)
-        pruseciky.append(x, y)
+        return (x, y)
 
 
     # usecka = vytvor_usecky(objekty)
