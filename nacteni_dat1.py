@@ -1,6 +1,6 @@
-pocatecni_bod = []
-koncovy_bod = []
-prekazky = []
+pocatecni_bod = ()
+koncovy_bod = ()
+prekazky = ()
 
 print('Startovní pozice')
 print(pocatecni_bod)
