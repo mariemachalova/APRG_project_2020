@@ -47,7 +47,7 @@ def najdi_prusecik(n_u, p_u):
     if y_help2 == 0:
         return
     y = y_help1 / y_help2
-    if ((n_u[0] <= x <= n_u[2]) or (p_u[0] <= x <= p_u[2])) and ((n_u[1] <= y <= n_u[3]) or (p_u[1] <= y <= p_u[3])):
+    if ((n_u[0] <= x <= n_u[2]) and (p_u[0] <= x <= p_u[2])) or ((n_u[1] <= y <= n_u[3]) and (p_u[1] <= y <= p_u[3])):
         # print(x, y)
         return (x, y)
 
