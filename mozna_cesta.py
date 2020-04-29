@@ -30,11 +30,11 @@ def vytvor_usecky(objekty):
                 p_u.append((point, polygon[0]))
             else:
                 p_u.append((point, polygon[idx + 1]))
-            najdi_prusecik(n_u, p_u)
-                if najdi_prusecik(n_u, p_u) == True:
-                    return x, y
-                else:
-                p_u.pop(p_u)
+        najdi_prusecik(n_u, p_u)
+        if najdi_prusecik(n_u, p_u) == True:
+            return x, y
+        else:
+            p_u.pop(p_u)
 
 
 def najdi_prusecik(n_u, p_u):
