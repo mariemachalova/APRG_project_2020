@@ -1,4 +1,3 @@
-from matplotlib import pyplot as plt
 from random import randint
 from math import atan2
 
@@ -67,6 +66,7 @@ def vypis_body(body):
         print(bod.x, bod.y)
 
 # tady zacina program bezet
+# nahodne body
 bodA = Bod(1,5)
 bodB = Bod(5,6)
 bodC = Bod(1,2)
@@ -141,6 +141,8 @@ stack.push(serazene_body[0])
 stack.push(serazene_body[1])
 print(stack.get_stack())
 
+
+
 for i in range(2,N-1):
     while stack.count() >= 2 and ccw(stack.next_to_top(serazene_body), stack.top_stack(serazene_body), serazene_body[i]) <= 0:
         stack.pop(serazene_body[-1])
@@ -151,4 +153,5 @@ for i in range(2,N-1):
         #pop stack
     #push points[i] to stack
 #end
+
 
