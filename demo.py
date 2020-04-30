@@ -144,8 +144,8 @@ print(stack.get_stack())
 
 
 for i in range(2,N-1):
-    while stack.count() >= 2 and ccw(stack.next_to_top(serazene_body), stack.top_stack(serazene_body), serazene_body[i]) <= 0:
-        stack.pop(serazene_body[-1])
+    while len(stack.get_stack()) >= 2 and ccw(stack.next_to_top(), stack.top_stack(), serazene_body[i]) <= 0:
+        stack.pop()
     stack.push(body[i])
 
 #for i = 2 to N-1:
