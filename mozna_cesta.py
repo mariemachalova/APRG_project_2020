@@ -54,21 +54,38 @@ def najdi_prusecik(n_u, p_u):
 
 
 
+def pridej_body_polygonu_v_polorovine(objekty, polygon, point):
+    c = - ((n_u[3] - n_u[1]) * n_u[0] + (n_u[0] - n_u[2]) * n_u[1])
+    for polygon in objekty:
+        gut_body = []
+        print(gut_body)
+        for point in polygon:
+            bodik = [point[0], point[1]]
+            gut_body = []
+            c = - ((n_u[3] - n_u[1]) * n_u[0] + (n_u[0] - n_u[2]) * n_u[1])
+            x = ((n_u[3] - n_u[1]) * bodik[0] + (n_u[0] - n_u[2]) * bodik[1] + c)
+            if (c > 0) and (x > 0) or (c < 0) and (x < 0):
+                gut_body.append(bodik)
+            else:
+                continue
+        return gut_body
+
+
 for polygon in objekty:
+
     moje_usecky_v_polygonu = vytvor_usecky(polygon)
     pruseciky = []
-    print(pruseciky)
+    # print(pruseciky)
     vysledne_body = []
-    # print(vysledne_body)
+
 
     for p_u in moje_usecky_v_polygonu:
         p_u = (p_u[0][0], p_u[0][1], p_u[1][0], p_u[1][1])
         pruseciky.append(najdi_prusecik(n_u, p_u))
 
-    # if len(pruseciky) > 0:
-    #     ty_spravne_body_polygonu = pridej_body_polygonu_v_polorovine(objekty, polygon, point)
-    #     # toto mozna spojit jinak
-    #     vysledne_body.append([pruseciky, ty_spravne_body_polygonu])
+    if len(pruseciky) > 0:
+        ty_spravne_body_polygonu = pridej_body_polygonu_v_polorovine(objekty, polygon, point)
+        vysledne_body.append([pruseciky, ty_spravne_body_polygonu])
 
 
 
