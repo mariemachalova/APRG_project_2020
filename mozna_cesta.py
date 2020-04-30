@@ -55,13 +55,10 @@ def najdi_prusecik(n_u, p_u):
 
 
 def pridej_body_polygonu_v_polorovine(polygon, n_u):
-    # c = - ((n_u[3] - n_u[1]) * n_u[0] + (n_u[0] - n_u[2]) * n_u[1])
-    # for polygon in objekty:
+    c = - ((n_u[3] - n_u[1]) * n_u[0] + (n_u[0] - n_u[2]) * n_u[1])
     gut_body = []
-    #     print(gut_body)
     for point in polygon:
         bodik = [point[0], point[1]]
-        gut_body = []
         c = - ((n_u[3] - n_u[1]) * n_u[0] + (n_u[0] - n_u[2]) * n_u[1])
         x = ((n_u[3] - n_u[1]) * bodik[0] + (n_u[0] - n_u[2]) * bodik[1] + c)
         if (c > 0) and (x > 0) or (c < 0) and (x < 0):
@@ -70,24 +67,27 @@ def pridej_body_polygonu_v_polorovine(polygon, n_u):
             continue
     return gut_body
 
-
+pruseciky = []
+    # print(pruseciky)
+vysledne_body = []
 for polygon in objekty:
 
     moje_usecky_v_polygonu = vytvor_usecky(polygon)
-    pruseciky = []
-    # print(pruseciky)
-    vysledne_body = []
+
 
 
     for p_u in moje_usecky_v_polygonu:
         p_u = (p_u[0][0], p_u[0][1], p_u[1][0], p_u[1][1])
-        pruseciky.append(najdi_prusecik(n_u, p_u))
+        prusecik = najdi_prusecik(n_u, p_u)
+        if prusecik != None:
+            pruseciky.append(najdi_prusecik(n_u, p_u))
 
     if len(pruseciky) > 0:
         ty_spravne_body_polygonu = pridej_body_polygonu_v_polorovine(polygon, n_u)
         vysledne_body.append([pruseciky, ty_spravne_body_polygonu])
 
-
+# print(pruseciky)
+print(vysledne_body)
 
 # def pridej_body_polygonu_v_polorovine(objekty, polygon):
 #     c = - ((n_u[3] - n_u[1]) * n_u[0] + (n_u[0] - n_u[2]) * n_u[1])
@@ -108,9 +108,9 @@ for polygon in objekty:
 moje_hrkhrk = vytvor_usecky(polygon)
 # print(moje_hrkhrk)
 pruseciky = []
-for p_u in moje_hrkhrk:
-    p_u = (p_u[0][0], p_u[0][1], p_u[1][0], p_u[1][1])
-    najdi_prusecik(n_u, p_u)
-    pruseciky.append(najdi_prusecik(n_u, p_u))
-
-print(pruseciky)
+# for p_u in moje_hrkhrk:
+#     p_u = (p_u[0][0], p_u[0][1], p_u[1][0], p_u[1][1])
+#     najdi_prusecik(n_u, p_u)
+#     pruseciky.append(najdi_prusecik(n_u, p_u))
+#
+# print(pruseciky)
