@@ -103,16 +103,52 @@ print(vypis_body)
 vypis_body(serazene_body)
 
 # let stack = empty_stack()
-
 # push points[0] to stack
 # push points[1] to stack
 # for i = 2 to N-1:
+
+
+
+class Stack():
+    def __init__(self):
+        self.serazene_body = []
+
+    def push(self,serazene_body):
+        self.serazene_body.append(serazene_body)
+
+    def pop(self):
+        return self.serazene_body.pop()
+
+    def count(self):
+        return self.serazene_body.count()
+
+    def is_empty(self):
+        return self.serazene_body == []
+
+    def top_stack(self):
+         if not self.is_empty():
+            return self.serazene_body[-1]
+
+    def next_to_top(self):
+        if not self.is_empty():
+            return self.serazene_body[-2]
+
+    def get_stack(self):
+        return self.serazene_body
+
+stack=Stack()
+stack.push(serazene_body[0])
+stack.push(serazene_body[1])
+print(stack.get_stack())
+
 for i in range(2,N-1):
-#     while count stack >= 2 and ccw(next_to_top(stack), top(stack), points[i]) <= 0:
-#while len(stack)
-#         pop stack
-#stack.pop()
+    while stack.count() >= 2 and ccw(stack.next_to_top(serazene_body), stack.top_stack(serazene_body), serazene_body[i]) <= 0:
+        stack.pop(serazene_body[-1])
+    stack.push(body[i])
 
-#     push points[i] to stack
-
+#for i = 2 to N-1:
+    #while count stack >= 2 and ccw(next_to_top(stack), top(stack), points[i]) <= 0:
+        #pop stack
+    #push points[i] to stack
+#end
 
