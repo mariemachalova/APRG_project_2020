@@ -46,9 +46,9 @@ def seradit_body_podle_uhlu(body):
     mensi=[]
     vetsi=[]
     rovno=[]
-    random_uhel = polarni_uhel(body[randint(0,len(body)-1)],body[0])
+    random_uhel = polarni_uhel(body[randint(0,len(body)-1)])
     for bod in body:
-        uhel_bodu=polarni_uhel(bod, body[0])
+        uhel_bodu=polarni_uhel(bod)
         if uhel_bodu < random_uhel:
             mensi.append(bod)
         elif uhel_bodu == random_uhel:
@@ -91,22 +91,35 @@ class Stack():
     def get_stack(self):
         return self.serazene_body
 
+
+def vyrad_body(puvodni_body, nove_body):
+    if len(puvodni_body) == len(nove_body):
+        return puvodni_body
+
+    vysledne_body = []
+
+    for bod in puvodni_body:
+        bod_val = bod
+        if bod_val in nove_body:
+            vysledne_body.append(bod)
+
+    return vysledne_body
+
+
 def graham_scan(body):
+    puvodni_body = body.copy()
+
     N = len(body)
     prvni_bod = body[0]
     bod_s_nejnizsim_y, poradi = najdi_bod_s_nejnizsim_y(body)
     body[0] = bod_s_nejnizsim_y
     body[poradi] = prvni_bod
-    print('po swapu')
-    vypis_body(body)
-
 
 
     global anchor
     anchor = body[0]
     serazene_body = seradit_body_podle_uhlu(body)
-    print(vypis_body)
-    vypis_body(serazene_body)
+
 
     stack = Stack()
     stack.push(serazene_body[0])
@@ -115,19 +128,10 @@ def graham_scan(body):
 
 
 
-    for i in range(2,N-1):
-        while len(stack.get_stack()) >= 2 and ccw(stack.next_to_top(), stack.top_stack(), serazene_body[i]) <= 0:
+    # for point in serazene_body:
+    for i in range(0, N):
+        while len(stack.get_stack()) > 1 and ccw(stack.next_to_top(), stack.top_stack(), serazene_body[i]) >= 0:
             stack.pop()
-        stack.push(body[i])
+        stack.push(serazene_body[i])
 
-
-
-objekt = [(14, 46), (7.7, 77), (18.7, 89.4), (36.6, 80.3), (32.8, 54.9), (22.3, 59.9)]
-body = []
-for bod in objekt:
-    body.append(Bod(bod[0], bod[1]))
-
-print('zacatek')
-vypis_body(body)
-
-graham_scan(body)
+    return vyrad_body(puvodni_body, stack.get_stack())

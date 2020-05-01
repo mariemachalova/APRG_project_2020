@@ -27,21 +27,3 @@ def zjisti_pocet_vrcholu(objekty):
                 if pocet_vrcholu == 1:
                     print("Objekt je jen jeden bod.")
                     break
-
-
-def zjisti_duplicity(objekty):
-    for polygon in objekty:
-
-
-
-
-rozkouskuj_objekt(objekty)
-print(rozkouskuj_objekt(objekty))
-
-
-if pam.isdigit() == True:
-    continue
-else:
-    break
-
-
