@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 # import data od terky
 
-
+# funkce pro vykreslovani objektu v mape
 def vykreslovani_objektu(objekty, trasa, zacatecni_bod, koncovy_bod):
     vertices = []
     codes = []
@@ -36,14 +36,14 @@ def vykreslovani_objektu(objekty, trasa, zacatecni_bod, koncovy_bod):
 
     plt.show()
 
-
+# funkce pro vykreslovani zacatecniho a koncoveho bodu trasy robota
 def vykresli_bod(bodik):
     X = bodik[0]
     Y = bodik[1]
     plt.plot([X], [Y], 'ro')
     plt.show()
 
-
+# funkce pro vykreslovani trasy
 def vykresli_trasu(trasicka):
     vertices = []
     codes = []
