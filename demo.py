@@ -131,7 +131,7 @@ for bod in objekt:
 print('zacatek')
 vypis_body(body)
 
-
+graham_scan(body)
 
 
 
