@@ -1,5 +1,8 @@
 from random import randint
 from math import atan2
+import matplotlib.path as mpath
+import matplotlib.patches as mpatches
+import matplotlib.pyplot as plt
 
 
 
@@ -9,7 +12,7 @@ class Bod:
         self.y = y
 
 def ccw(bod1, bod2, bod3):
-    return (bod2.y - bod1.y)*(bod3.x - bod1.x) - (bod2.x - bod1.x)*(bod3.y - bod1.y)
+    return (bod2.x - bod1.x)*(bod3.y - bod1.y) - (bod2.y - bod1.y)*(bod3.x - bod1.x)
 
 def najdi_bod_s_nejnizsim_y(body):
     prvni_bod = body[0]
@@ -60,10 +63,58 @@ def seradit_body_podle_uhlu(body):
             + sorted(rovno, key=vzdalenost_bodu) \
             + seradit_body_podle_uhlu(vetsi)
 
-
 def vypis_body(body):
     for bod in body:
-        print(bod.x, bod.y)
+        bod = (bod.x,bod.y)
+        print(bod)
+
+body = [(14, 46), (7.7, 77), (18.7, 89.4), (36.6, 80.3), (32.8, 54.9), (22.3, 59.9)]
+body2 = [(51.7, 52.0), (54.4, 22.8), (43.8, 7.9), (34.7, 10.2), (32.2, 17.4), (23.2, 11.1), (15.6, 17.4),
+             (22.2, 42.3), (37.1, 27.2), (44.4, 30.4), (41.6, 37.4)]
+body3 = [(63.4, 45.1), (88.0, 54.9), (72.6, 20.6), (65.7, 27.7), (63.4, 45.1)]
+body4 = [(47.3, 81.2), (58.5, 77.4), (62.8, 86.3), (88.2, 86.3), (71.1, 60.5), (66.2, 75.2), (51.7, 68.8)]
+
+print("začátek")
+vypis_body(body)
+
+
+
+
+# tady zacina program bezet
+# nahodne body
+
+
+# let N be number of points
+N = len(body)
+
+
+prvni_bod = body[0]
+bod_s_nejnizsim_y, poradi = najdi_bod_s_nejnizsim_y(body)
+
+# swap points[0] with the point with the lowest y-coordinate
+# prohodime body
+body[0] = bod_s_nejnizsim_y
+body[poradi] = prvni_bod
+
+print('po swapu')
+vypis_body(body)
+
+# sort points by polar angle with points[0]
+global anchor
+anchor = body[0]
+serazene_body = seradit_body_podle_uhlu(body)
+
+
+
+print(vypis_body)
+vypis_body(serazene_body)
+
+# let stack = empty_stack()
+# push points[0] to stack
+# push points[1] to stack
+# for i = 2 to N-1:
+
+
 
 class Stack():
     def __init__(self):
@@ -75,8 +126,6 @@ class Stack():
     def pop(self):
         return self.serazene_body.pop()
 
-    def count(self):
-        return self.serazene_body.count()
 
     def is_empty(self):
         return self.serazene_body == []
@@ -92,49 +141,22 @@ class Stack():
     def get_stack(self):
         return self.serazene_body
 
-def graham_scan(body):
-    N = len(body)
-    prvni_bod = body[0]
-    bod_s_nejnizsim_y, poradi = najdi_bod_s_nejnizsim_y(body)
-    body[0] = bod_s_nejnizsim_y
-    body[poradi] = prvni_bod
-    print('po swapu')
-    vypis_body(body)
+stack=Stack()
+stack.push(serazene_body[0])
+stack.push(serazene_body[1])
+print(stack.get_stack())
 
 
 
-    global anchor
-    anchor = body[0]
-    serazene_body = seradit_body_podle_uhlu(body)
-    print("serazene_body")
-    vypis_body(serazene_body)
+for i in range(2,N-1):
+    while len(stack.get_stack()) >= 2 and ccw(stack.next_to_top(), stack.top_stack(), serazene_body[i]) <= 0:
+        stack.pop()
+    stack.push(body[i])
 
-    stack = Stack()
-    stack.push(serazene_body[0])
-    stack.push(serazene_body[1])
-    print(stack.get_stack())
-
-
-
-    for i in range(2,N-1):
-        while len(stack.get_stack()) >= 2 and ccw(stack.next_to_top(), stack.top_stack(), serazene_body[i]) <= 0:
-            stack.pop()
-        stack.push(body[i])
-
-
-
-objekt = [(63.4, 45.1), (88.0, 54.9), (72.6, 20.6), (65.7, 27.7), (63.4, 45.1)]
-body = []
-for bod in objekt:
-    body.append(Bod(bod[0], bod[1]))
-
-print('zacatek')
-vypis_body(body)
-
-
-
-
-
-
+#for i = 2 to N-1:
+    #while count stack >= 2 and ccw(next_to_top(stack), top(stack), points[i]) <= 0:
+        #pop stack
+    #push points[i] to stack
+#end
 
 
