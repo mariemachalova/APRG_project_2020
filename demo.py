@@ -106,7 +106,7 @@ def graham_scan(body):
     global anchor
     anchor = body[0]
     serazene_body = seradit_body_podle_uhlu(body)
-    print("serazene_body")
+    print(vypis_body)
     vypis_body(serazene_body)
 
     stack = Stack()
