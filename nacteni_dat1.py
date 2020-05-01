@@ -1,21 +1,24 @@
-pocatecni_bod = ()
-koncovy_bod = ()
+zacatek = ()
+konec = ()
 prekazky = ()
 
-print('Startovní pozice')
-print(pocatecni_bod)
+def nacteni_mapy(pozice):
+    with open('map_data_1.json') as soubor:
+        import json
+        nacteny_soubor = json.loads(soubor)
+        zacatek = nacteny_soubor['path']['start']
+        konec = nacteny_soubor['path']['end']
+            return zacatek
+                return konec
 
-def nacteni_mapy(prekazky):
-    with open('konvexni_obaly.py') as soubor:
-        for graham_scan in soubor
-            print(prekazky)
-
-
-
-def read_input_file(file):
-    with open(file, 'map_data_0.json') as file:
+def read_input_file(soubor):
+    with open(soubor, 'map_data_0.json') as soubor:
         pocatecni_bod.append((prekazky(x), prekazky(y))
-            koncovy_bod = pocatecni_bod + prekazky
+            vysledne_objekty = ()
+            obsah_souboru = soubor.read()
+                for objekt in nacteny_soubor
+                    vysledne_objekty.append(objekt['coordinates'])
+return vysledne_objekty
 
 print('Cílová pozice')
-print(koncovy_bod)
+print(konec)
