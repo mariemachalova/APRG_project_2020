@@ -17,7 +17,6 @@ def najdi_bod_s_nejnizsim_y(body):
     poradi = 0
     vysledne_poradi = poradi
 
-  # projdeme to bod po bodu
     for bod in body:
         if (bod.y < bod_s_nejnizsim_y.y):
             bod_s_nejnizsim_y = bod
